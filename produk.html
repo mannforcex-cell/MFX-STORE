@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<title>Man Force X — Platform Digital No.1 Malaysia</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cyan:#00e5ff;--cyan-dim:rgba(0,229,255,.12);--cyan-glow:rgba(0,229,255,.3);
+  --purple:#a855f7;--green:#10b981;--gold:#fbbf24;--red:#ef4444;
+  --bg:#050810;--bg2:#090d1a;--bg3:#0e1321;--card:#0d1222;
+  --border:rgba(255,255,255,.07);--border-c:rgba(0,229,255,.22);
+  --text:#eef2ff;--text2:#cbd5e1;--muted:#64748b;
+  --font-head:'Rajdhani',sans-serif;--font-body:'Inter',sans-serif;
+  --radius:14px;--radius-lg:22px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:15px;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+ul{list-style:none}
+.container{max-width:1280px;margin:0 auto;padding:0 24px}
+@media(max-width:480px){.container{padding:0 16px}}
+.text-cyan{color:var(--cyan)}.glow-text{text-shadow:0 0 20px rgba(0,229,255,.5),0 0 60px rgba(0,229,255,.2)}
+.section-title{font-family:var(--font-head);font-size:clamp(28px,4.5vw,48px);font-weight:700;letter-spacing:1.5px;line-height:1.1;margin-bottom:12px}
+.section-sub{color:var(--muted);max-width:580px;margin:0 auto 52px;text-align:center;font-size:15px;line-height:1.7}
+.badge-pill{display:inline-flex;align-items:center;padding:4px 12px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.badge-hot{background:rgba(255,100,0,.18);color:#ff6820;border:1px solid rgba(255,100,0,.35)}
+.badge-new{background:rgba(0,229,255,.14);color:var(--cyan);border:1px solid rgba(0,229,255,.3)}
+.badge-sale{background:rgba(239,68,68,.18);color:#f87171;border:1px solid rgba(239,68,68,.35)}
+.badge-popular{background:rgba(168,85,247,.18);color:var(--purple);border:1px solid rgba(168,85,247,.35)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 30px;border-radius:var(--radius);font-family:var(--font-head);font-weight:700;font-size:15px;transition:all .25s;cursor:pointer;border:none;white-space:nowrap}
+.btn-primary{background:linear-gradient(135deg,var(--cyan),#0099ff);color:#050810;box-shadow:0 0 28px rgba(0,229,255,.35)}
+.btn-primary:hover{box-shadow:0 0 42px rgba(0,229,255,.55);transform:translateY(-2px)}
+.btn-outline{background:transparent;border:1.5px solid var(--border-c);color:var(--cyan)}
+.btn-outline:hover{background:var(--cyan-dim);transform:translateY(-1px)}
+.btn-green{background:linear-gradient(135deg,#10b981,#059669);color:#fff;box-shadow:0 0 24px rgba(16,185,129,.35)}
+.btn-green:hover{box-shadow:0 0 36px rgba(16,185,129,.55);transform:translateY(-2px)}
+.btn-sm{padding:8px 20px;font-size:13px}
+.btn-lg{padding:16px 42px;font-size:17px}
+.btn-xl{padding:18px 52px;font-size:18px}
+
+/* TOP BAR */
+#top-bar{background:rgba(0,229,255,.06);border-bottom:1px solid var(--border-c);padding:10px 24px;text-align:center;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;font-size:13px}
+#top-bar a{color:var(--cyan);font-weight:600}
+#top-bar a:hover{color:#fff}
+#top-bar .sep{color:var(--border-c)}
+#top-bar .info{color:var(--muted)}
+@media(max-width:500px){#top-bar .sep,#top-bar .info{display:none}}
+
+/* NAVBAR */
+#navbar{position:sticky;top:0;z-index:100;background:rgba(5,8,16,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--font-head);font-weight:700;font-size:20px;letter-spacing:2.5px;color:var(--cyan);flex-shrink:0}
+.logo-icon{width:38px;height:38px;background:var(--cyan-dim);border:1px solid var(--border-c);border-radius:10px;display:grid;place-items:center;font-size:20px}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan)}
+.nav-cta{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav-secure{font-size:12px;color:var(--muted);border:1px solid var(--border);padding:6px 14px;border-radius:999px}
+#nav-toggle{display:none;flex-direction:column;gap:5px;padding:8px}
+#nav-toggle span{display:block;width:22px;height:2px;background:var(--muted);border-radius:2px;transition:all .3s}
+#nav-toggle.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);background:var(--cyan)}
+#nav-toggle.open span:nth-child(2){opacity:0}
+#nav-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);background:var(--cyan)}
+#mobile-menu{display:none;flex-direction:column;padding:12px 20px 20px;background:var(--bg2);border-top:1px solid var(--border);gap:2px}
+#mobile-menu a{padding:12px 0;font-family:var(--font-head);font-size:17px;font-weight:700;color:var(--text2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;transition:color .2s}
+#mobile-menu a:last-child{border-bottom:none}
+#mobile-menu a:hover{color:var(--cyan)}
+#mobile-menu.open{display:flex}
+@media(max-width:900px){.nav-links,.nav-secure{display:none}}
+@media(max-width:640px){.nav-cta{display:none}#nav-toggle{display:flex}}
+
+/* TICKER */
+#ticker{overflow:hidden;background:rgba(0,229,255,.04);border-bottom:1px solid rgba(0,229,255,.12);padding:11px 0}
+.ticker-track{display:flex;width:max-content;animation:ticker 35s linear infinite}
+.ticker-track:hover{animation-play-state:paused}
+.ticker-item{display:flex;align-items:center;gap:10px;padding:0 40px;font-size:13px;font-weight:600;color:rgba(0,229,255,.7);white-space:nowrap}
+.t-dot{width:5px;height:5px;border-radius:50%;background:var(--cyan);flex-shrink:0}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* HERO */
+#hero{padding:110px 24px 100px;text-align:center;position:relative;overflow:hidden}
+#hero::before{content:'';position:absolute;top:-50px;left:50%;transform:translateX(-50%);width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,255,.06) 0%,transparent 65%);pointer-events:none}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 20px;border-radius:999px;background:var(--cyan-dim);border:1px solid var(--border-c);color:var(--cyan);font-size:12px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;margin-bottom:32px}
+.hero-title{font-family:var(--font-head);font-size:clamp(48px,9vw,100px);font-weight:700;line-height:.95;margin-bottom:28px}
+.hero-sub{font-size:clamp(15px,2.2vw,19px);color:var(--text2);max-width:640px;margin:0 auto 40px;line-height:1.75}
+.hero-btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:36px}
+.hero-contacts{display:flex;flex-wrap:wrap;gap:24px;justify-content:center;font-size:14px;color:var(--muted)}
+.hero-contacts a{display:inline-flex;align-items:center;gap:7px;font-weight:500;transition:color .2s}
+.hero-contacts a:hover{color:var(--cyan)}
+.trust-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:48px}
+.trust-pill{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:999px;border:1px solid var(--border);font-size:12px;color:var(--text2);background:rgba(255,255,255,.03)}
+
+/* STATS */
+#stats{padding:56px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat-item{text-align:center;padding:24px 16px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);transition:border-color .2s}
+.stat-item:hover{border-color:var(--border-c)}
+.stat-icon{font-size:28px;margin-bottom:14px}
+.stat-val{font-family:var(--font-head);font-size:clamp(28px,4vw,42px);font-weight:700;color:var(--cyan);line-height:1;margin-bottom:8px}
+.stat-lbl{font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted)}
+@media(max-width:700px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+
+.section{padding:88px 0}
+.section-alt{background:var(--bg2)}
+
+/* ═══════════════════════════════════════════
+   PRODUCT CARDS — BESAR + STOK TOGGLE
+   ═══════════════════════════════════════════ */
+.products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+@media(max-width:700px){.products-grid{grid-template-columns:1fr}}
+
+.product-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  cursor:pointer;
+  transition:all .28s;
+  position:relative;
+}
+.product-card:hover{border-color:var(--border-c);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,229,255,.13)}
+
+/* STOK HABIS — overlay & efek */
+.product-card.out-of-stock{
+  opacity:.6;
+  filter:grayscale(.4);
+  cursor:not-allowed;
+}
+.product-card.out-of-stock:hover{
+  transform:none;
+  box-shadow:none;
+  border-color:var(--border);
+}
+.sold-out-ribbon{
+  position:absolute;
+  top:20px;left:-36px;
+  background:#ef4444;
+  color:#fff;
+  font-family:var(--font-head);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  padding:6px 48px;
+  transform:rotate(-45deg);
+  z-index:10;
+  box-shadow:0 2px 8px rgba(0,0,0,.4);
+}
+
+/* KOTAK GAMBAR — LEBIH BESAR */
+.product-img-box{
+  width:100%;
+  aspect-ratio:16/9;
+  background:var(--bg3);
+  border-bottom:1px solid var(--border);
+  position:relative;
+  overflow:hidden;
+}
+.product-img-box img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .45s ease;
+}
+.product-card:not(.out-of-stock):hover .product-img-box img{transform:scale(1.07)}
+.img-placeholder{
+  width:100%;height:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+  background:repeating-linear-gradient(45deg,var(--bg3),var(--bg3) 10px,rgba(0,229,255,.03) 10px,rgba(0,229,255,.03) 20px);
+}
+.img-placeholder .ph-icon{font-size:64px;opacity:.35}
+.img-placeholder .ph-text{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase;opacity:.6}
+.img-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(5,8,16,.55) 100%);pointer-events:none}
+.badge-wrap{position:absolute;top:12px;right:12px;z-index:3;display:flex;flex-direction:column;gap:5px;align-items:flex-end}
+
+/* STATUS STOK */
+.stock-status{
+  position:absolute;bottom:12px;left:14px;z-index:3;
+  display:flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:700;
+  padding:4px 10px;border-radius:999px;
+  backdrop-filter:blur(8px);
+}
+.stock-status.in{color:#4ade80;background:rgba(74,222,128,.15);border:1px solid rgba(74,222,128,.3)}
+.stock-status.out{color:#f87171;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3)}
+.s-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.stock-status.in .s-dot{background:#4ade80;animation:pulse 2s infinite}
+.stock-status.out .s-dot{background:#f87171}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.5)}50%{box-shadow:0 0 0 7px transparent}}
+
+/* BODY */
+.product-body{padding:24px;display:flex;flex-direction:column;gap:12px;flex:1}
+.p-cat{font-size:11px;font-weight:700;color:var(--cyan);letter-spacing:1.5px;text-transform:uppercase}
+.p-name{font-family:var(--font-head);font-size:22px;font-weight:700;line-height:1.3}
+.p-desc{font-size:14px;color:var(--muted);line-height:1.65;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.p-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.p-stars{font-size:13px;color:var(--gold);font-weight:600}
+.p-stars span{color:var(--muted);font-weight:400}
+.p-delivery{font-size:13px;color:var(--muted)}
+
+/* HARGA — MAKIN BESAR */
+.price-wrap{margin-top:auto;padding-top:16px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.price-left{display:flex;flex-direction:column;gap:3px}
+.price-label{font-size:10px;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+.price-main{font-family:var(--font-head);font-size:40px;font-weight:700;color:var(--cyan);line-height:1}
+.price-old{font-size:14px;color:var(--muted);text-decoration:line-through}
+.price-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.save-badge{padding:4px 10px;border-radius:6px;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);font-size:12px;font-weight:700;color:#f87171}
+.buy-btn{display:inline-flex;align-items:center;gap:6px;padding:12px 22px;border-radius:12px;background:var(--cyan-dim);border:1px solid var(--border-c);color:var(--cyan);font-family:var(--font-head);font-size:14px;font-weight:700;transition:all .25s}
+.buy-btn:hover{background:var(--cyan);color:#050810}
+.sold-btn{display:inline-flex;align-items:center;gap:6px;padding:12px 22px;border-radius:12px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);color:#f87171;font-family:var(--font-head);font-size:14px;font-weight:700}
+
+/* STEPS */
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.step-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px 24px;transition:all .25s;position:relative;overflow:hidden}
+.step-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),transparent);opacity:0;transition:opacity .3s}
+.step-card:hover{border-color:var(--border-c)}.step-card:hover::before{opacity:1}
+.step-n{font-family:var(--font-head);font-size:64px;font-weight:700;color:rgba(0,229,255,.12);line-height:1;margin-bottom:18px}
+.step-t{font-family:var(--font-head);font-size:20px;font-weight:700;margin-bottom:10px}
+.step-d{font-size:14px;color:var(--muted);line-height:1.65}
+@media(max-width:900px){.steps-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.steps-grid{grid-template-columns:1fr}}
+
+/* WHY */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.why-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;display:flex;gap:18px;transition:all .25s}
+.why-card:hover{border-color:var(--border-c);transform:translateY(-3px)}
+.why-icon{width:52px;height:52px;flex-shrink:0;border-radius:12px;background:var(--cyan-dim);border:1px solid var(--border-c);display:grid;place-items:center;font-size:24px}
+.why-t{font-family:var(--font-head);font-size:18px;font-weight:700;margin-bottom:8px}
+.why-d{font-size:13px;color:var(--muted);line-height:1.65}
+@media(max-width:900px){.why-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.why-grid{grid-template-columns:1fr}}
+
+/* TESTI */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testi-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;transition:all .25s;display:flex;flex-direction:column}
+.testi-card:hover{border-color:var(--border-c);transform:translateY(-3px)}
+.t-stars{color:var(--gold);font-size:18px;margin-bottom:16px;letter-spacing:2px}
+.t-text{font-size:14px;color:var(--text2);line-height:1.75;margin-bottom:20px;font-style:italic;flex:1}
+.t-author{display:flex;align-items:center;gap:12px}
+.t-avatar{width:42px;height:42px;border-radius:50%;background:var(--cyan-dim);border:1px solid var(--border-c);display:grid;place-items:center;font-family:var(--font-head);font-weight:700;font-size:16px;color:var(--cyan);flex-shrink:0}
+.t-name{font-weight:700;font-size:14px}.t-role{font-size:12px;color:var(--muted)}
+@media(max-width:900px){.testi-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.testi-grid{grid-template-columns:1fr}}
+
+/* RESELLER */
+#reseller{background:linear-gradient(135deg,rgba(0,229,255,.05),rgba(168,85,247,.05));border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.res-inner{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;padding:64px 0}
+.res-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.res-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:999px;font-size:13px;font-weight:600;background:var(--cyan-dim);border:1px solid var(--border-c);color:var(--cyan)}
+
+/* FAQ */
+.faq-list{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color .2s}
+.faq-item.open{border-color:var(--border-c)}
+.faq-q{width:100%;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;font-weight:600;font-size:15px;text-align:left;background:none;color:var(--text);cursor:pointer;transition:color .2s;gap:12px}
+.faq-q:hover{color:var(--cyan)}
+.faq-chev{font-size:18px;transition:transform .3s;flex-shrink:0;color:var(--muted);width:28px;height:28px;display:grid;place-items:center;border-radius:50%;border:1px solid var(--border);background:var(--bg3)}
+.faq-item.open .faq-chev{transform:rotate(180deg);color:var(--cyan);border-color:var(--border-c)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s;padding:0 24px;color:var(--muted);font-size:14px;line-height:1.75}
+.faq-item.open .faq-a{max-height:250px;padding:0 24px 20px}
+
+/* CTA */
+#cta-final{padding:100px 0;text-align:center;background:linear-gradient(135deg,rgba(0,229,255,.04),var(--bg) 50%,rgba(168,85,247,.04))}
+.cta-btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:40px}
+.footer-cta{background:rgba(0,229,255,.05);border-top:1px solid var(--border-c);border-bottom:1px solid var(--border);padding:56px 24px;text-align:center}
+.footer-cta-btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:28px}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:64px 0 32px}
+.footer-grid{display:grid;grid-template-columns:2.2fr 1fr 1.2fr;gap:56px;margin-bottom:48px}
+.f-brand{font-family:var(--font-head);font-size:24px;font-weight:700;color:var(--cyan);letter-spacing:2.5px;margin-bottom:16px}
+.f-desc{font-size:14px;color:var(--muted);line-height:1.75;max-width:360px;margin-bottom:22px}
+.f-trust{display:flex;flex-wrap:wrap;gap:8px}
+.f-tag{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:999px;border:1px solid var(--border);font-size:11px;color:var(--muted)}
+.f-head{font-family:var(--font-head);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text2);margin-bottom:20px}
+.f-links{display:flex;flex-direction:column;gap:12px}
+.f-links a{font-size:14px;color:var(--muted);transition:color .2s}
+.f-links a:hover{color:var(--cyan)}
+.f-contact{display:flex;align-items:flex-start;gap:12px;margin-bottom:18px}
+.f-ci{font-size:20px;flex-shrink:0}
+.f-cl{font-size:11px;color:var(--muted);margin-bottom:3px}
+.f-cv{font-size:14px;font-weight:600}
+.f-bottom{border-top:1px solid var(--border);padding-top:28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--muted)}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:580px){.footer-grid{grid-template-columns:1fr;gap:36px}}
+
+/* FLOAT WA */
+#float-wa{position:fixed;bottom:28px;right:28px;z-index:200;display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#10b981,#059669);color:#fff;font-weight:700;font-size:14px;font-family:var(--font-head);padding:13px 22px;border-radius:999px;box-shadow:0 6px 28px rgba(16,185,129,.5);transition:all .25s}
+#float-wa:hover{transform:scale(1.05)}
+@media(max-width:480px){#float-wa .wa-t{display:none}#float-wa{padding:14px;border-radius:50%;font-size:20px}}
+
+/* LIVE TOAST */
+#live-toast{position:fixed;bottom:28px;left:28px;z-index:200;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;max-width:300px;display:flex;align-items:center;gap:12px;box-shadow:0 10px 30px rgba(0,0,0,.5);transition:opacity .4s,transform .4s}
+#live-toast.hidden{opacity:0;transform:translateY(12px);pointer-events:none}
+.l-dot{width:9px;height:9px;border-radius:50%;background:var(--green);flex-shrink:0;animation:pulse 2s infinite}
+.l-text{font-size:12px;color:var(--text2);line-height:1.5}
+.l-text strong{color:var(--green);font-weight:700}
+@media(max-width:520px){#live-toast{display:none!important}}
+
+/* MODAL */
+#modal{display:none;position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:20px;align-items:center;justify-content:center}
+#modal.open{display:flex}
+.modal-box{background:var(--bg2);border:1px solid var(--border-c);border-radius:28px;max-width:600px;width:100%;position:relative;max-height:92vh;overflow-y:auto;animation:mIn .3s cubic-bezier(.4,0,.2,1)}
+@keyframes mIn{from{opacity:0;transform:scale(.94) translateY(16px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-img{width:100%;aspect-ratio:16/9;background:var(--bg3);border-radius:24px 24px 0 0;overflow:hidden;position:relative}
+.modal-img img{width:100%;height:100%;object-fit:cover;display:block}
+.modal-img .ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:80px}
+.m-close{position:absolute;top:14px;right:14px;font-size:22px;color:#fff;cursor:pointer;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.2);border-radius:50%;width:36px;height:36px;display:grid;place-items:center;transition:all .25s;z-index:5}
+.m-close:hover{background:rgba(0,0,0,.8)}
+.m-body{padding:32px}
+.m-cat{font-size:11px;font-weight:700;color:var(--cyan);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+.m-name{font-family:var(--font-head);font-size:30px;font-weight:700;margin-bottom:14px;line-height:1.15}
+.m-price{font-family:var(--font-head);font-size:46px;font-weight:700;color:var(--cyan)}
+.m-desc{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:24px}
+.m-btns{display:flex;flex-direction:column;gap:12px}
+
+/* STOK HABIS modal */
+.modal-sold-notice{
+  display:flex;align-items:center;gap:10px;
+  background:rgba(239,68,68,.1);
+  border:1px solid rgba(239,68,68,.3);
+  border-radius:var(--radius);
+  padding:14px 18px;
+  margin-bottom:16px;
+  color:#f87171;
+  font-size:14px;
+  font-weight:600;
+}
+
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--bg3);border-radius:3px}
+::selection{background:rgba(0,229,255,.25);color:var(--text)}
+</style>
+</head>
+<body>
+
+<div id="top-bar">
+  <a href="https://wa.me/601139183035" target="_blank">💬 +60 11-3918 3035</a>
+  <span class="sep">|</span>
+  <a href="https://t.me/ManForceX_Official" target="_blank">✈️ @ManForceX_Official</a>
+  <span class="sep">|</span>
+  <span class="info">⚡ Sokongan 24/7 — Proses Pantas &amp; Selamat</span>
+</div>
+
+<div id="navbar">
+  <div class="container nav-inner">
+    <a class="nav-logo" href="#"><div class="logo-icon">🎮</div>MAN FORCE X</a>
+    <ul class="nav-links">
+      <li><a href="#" class="active">Laman Utama</a></li>
+      <li><a href="#produk">Semua Produk</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="https://wa.me/601139183035" target="_blank">WhatsApp</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="https://wa.me/601139183035" target="_blank" class="btn btn-green btn-sm">💬 Hubungi Admin</a>
+      <span class="nav-secure">🔒 100% Selamat</span>
+    </div>
+    <button id="nav-toggle"><span></span><span></span><span></span></button>
+  </div>
+  <div id="mobile-menu">
+    <a href="#">🏠 Laman Utama</a>
+    <a href="#produk">📦 Semua Produk</a>
+    <a href="#faq">❓ FAQ</a>
+    <a href="https://wa.me/601139183035" target="_blank" style="color:var(--green)">💬 WhatsApp Admin</a>
+    <a href="https://t.me/ManForceX_Official" target="_blank" style="color:var(--cyan)">✈️ Telegram</a>
+  </div>
+</div>
+
+<section id="hero">
+  <div class="container">
+    <div class="hero-eyebrow">⚡ Platform Digital No.1 Di Gua Musang Kelantan</div>
+    <h1 class="hero-title">KUASAI <span class="text-cyan glow-text">PERMAINAN</span><br>ANDA.</h1>
+    <p class="hero-sub">Top-up game, perkhidmatan suntingan video, dan alatan digital premium. Pantas, selamat, dipercayai ribuan gamers Malaysia.</p>
+    <div class="hero-btns">
+      <a href="#produk" class="btn btn-primary btn-xl">🛒 Teroka Produk →</a>
+      <a href="https://wa.me/601139183035" target="_blank" class="btn btn-green btn-xl">💬 Hubungi Admin</a>
+    </div>
+    <div class="hero-contacts">
+      <a href="https://wa.me/601139183035" target="_blank">💬 +60 11-3918 3035</a>
+      <span style="color:var(--border-c)">·</span>
+      <a href="https://t.me/ManForceX_Official" target="_blank">✈️ @ManForceX_Official</a>
+    </div>
+    <div class="trust-row">
+      <span class="trust-pill">✅ 3.889+ Pesanan Berjaya</span>
+      <span class="trust-pill">⚡ Proses 1–5 Minit</span>
+      <span class="trust-pill">🔒 Transaksi Selamat</span>
+      <span class="trust-pill">⏰ Sokongan 24/7</span>
+      <span class="trust-pill">⭐ Rating 4.9/5</span>
+    </div>
+  </div>
+</section>
+
+<div id="ticker"><div class="ticker-track" id="tkr"></div></div>
+<section id="stats"><div class="container"><div class="stats-grid" id="stats-grid"></div></div></section>
+
+<section class="section" id="produk">
+  <div class="container">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:44px;flex-wrap:wrap;gap:16px">
+      <div>
+        <h2 class="section-title" style="margin-bottom:6px">🔥 SEMUA <span class="text-cyan">PRODUK</span></h2>
+        <p style="color:var(--muted);font-size:14px">Klik produk untuk lihat harga &amp; beli</p>
+      </div>
+      <a href="https://wa.me/601139183035" target="_blank" class="btn btn-outline">💬 Tanya Admin</a>
+    </div>
+    <div class="products-grid" id="pgrid"></div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:14px"><h2 class="section-title">CARA <span class="text-cyan">ORDER</span></h2></div>
+    <p class="section-sub">Proses mudah dalam 4 langkah sahaja</p>
+    <div class="steps-grid">
+      <div class="step-card"><div class="step-n">01</div><div class="step-t">Pilih Produk</div><p class="step-d">Layari katalog dan klik produk yang anda minati untuk lihat harga &amp; butiran.</p></div>
+      <div class="step-card"><div class="step-n">02</div><div class="step-t">Hubungi Admin</div><p class="step-d">Klik "Beli via WhatsApp" dan admin kami akan sedia membantu anda.</p></div>
+      <div class="step-card"><div class="step-n">03</div><div class="step-t">Buat Bayaran</div><p class="step-d">Admin hantar maklumat bayaran. TNG, Maybank, CIMB, ShopeePay diterima.</p></div>
+      <div class="step-card"><div class="step-n">04</div><div class="step-t">Selesai! ✓</div><p class="step-d">Produk dihantar pantas &amp; selamat. Top-up masuk dalam 1–5 minit sahaja.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:14px"><h2 class="section-title">KENAPA <span class="text-cyan">MAN FORCE X?</span></h2></div>
+    <p class="section-sub">Kami bukan sekadar kedai digital biasa. Kami partner digital anda.</p>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon">⚡</div><div><div class="why-t">Proses Pantas</div><p class="why-d">Top-up diproses dalam masa 1–5 minit selepas bayaran disahkan.</p></div></div>
+      <div class="why-card"><div class="why-icon">🔒</div><div><div class="why-t">100% Selamat</div><p class="why-d">Setiap transaksi disahkan oleh admin. Data anda terjaga sepenuhnya.</p></div></div>
+      <div class="why-card"><div class="why-icon">🏆</div><div><div class="why-t">Kualiti Terjamin</div><p class="why-d">Semua produk diuji dan terbukti. Rating tinggi dari pelanggan setia.</p></div></div>
+      <div class="why-card"><div class="why-icon">👥</div><div><div class="why-t">Dipercayai Ramai</div><p class="why-d">Lebih 1,200 pesanan berjaya sejak kami mula beroperasi.</p></div></div>
+      <div class="why-card"><div class="why-icon">⏰</div><div><div class="why-t">Sokongan 24/7</div><p class="why-d">Admin sedia membantu bila-bila masa melalui WhatsApp &amp; Telegram.</p></div></div>
+      <div class="why-card"><div class="why-icon">💰</div><div><div class="why-t">Harga Terbaik</div><p class="why-d">Harga kompetitif dengan diskaun menarik untuk pelanggan setia.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="reseller">
+  <div class="container">
+    <div class="res-inner">
+      <div>
+        <p style="font-size:12px;font-weight:700;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px">🏆 Program Eksklusif</p>
+        <h2 class="section-title" style="text-align:left">JADI <span class="text-cyan">RESELLER</span> KAMI</h2>
+        <p style="color:var(--muted);max-width:500px;font-size:15px;line-height:1.75;margin-top:12px">Dapatkan harga borong eksklusif dan komisyen menarik. Jana pendapatan sampingan bersama Man Force X.</p>
+        <div class="res-tags">
+          <span class="res-tag">✓ Harga Borong</span><span class="res-tag">✓ Komisyen Tinggi</span>
+          <span class="res-tag">✓ Sokongan Penuh</span><span class="res-tag">✓ Stok Sentiasa Ada</span>
+        </div>
+      </div>
+      <a href="https://wa.me/601139183035?text=Salam%2C%20saya%20berminat%20nak%20jadi%20reseller%20Man%20Force%20X" target="_blank" class="btn btn-primary btn-xl">Daftar Sekarang →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:14px"><h2 class="section-title">APA KATA <span class="text-cyan">PELANGGAN</span></h2></div>
+    <p class="section-sub">Kepuasan pelanggan adalah keutamaan kami</p>
+    <div class="testi-grid" id="testi-grid"></div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:14px"><h2 class="section-title">SOALAN <span class="text-cyan">LAZIM</span></h2></div>
+    <p class="section-sub">Jawapan kepada soalan yang paling kerap ditanya</p>
+    <div class="faq-list" id="faq-list"></div>
+    <div style="text-align:center;margin-top:36px">
+      <p style="color:var(--muted);font-size:14px;margin-bottom:18px">Masih ada soalan lain?</p>
+      <a href="https://wa.me/601139183035" target="_blank" class="btn btn-green">💬 Tanya Admin Terus</a>
+    </div>
+  </div>
+</section>
+
+<section id="cta-final">
+  <div class="container">
+    <h2 class="section-title">READY? <span class="text-cyan glow-text">ORDER SEKARANG.</span></h2>
+    <p style="color:var(--muted);font-size:18px;max-width:560px;margin:14px auto 0;line-height:1.7">Jangan tunggu lagi. Ribuan pelanggan dah percayakan Man Force X.</p>
+    <div class="cta-btns">
+      <a href="#produk" class="btn btn-primary btn-xl">🛒 Teroka Produk</a>
+      <a href="https://wa.me/601139183035" target="_blank" class="btn btn-green btn-xl">💬 WhatsApp Admin</a>
+      <a href="https://t.me/ManForceX_Official" target="_blank" class="btn btn-outline btn-xl">✈️ Telegram</a>
+    </div>
+  </div>
+</section>
+
+<div class="footer-cta">
+  <div class="container">
+    <h3 class="section-title">ADA SOALAN? <span class="text-cyan">HUBUNGI KAMI</span></h3>
+    <p style="color:var(--muted);font-size:15px;margin-top:10px">Admin sedia membantu 24/7. Proses pesanan cepat, selamat, boleh dipercayai.</p>
+    <div class="footer-cta-btns">
+      <a href="https://wa.me/601139183035" target="_blank" class="btn btn-green btn-lg">💬 WhatsApp: +60 11-3918 3035</a>
+      <a href="https://t.me/ManForceX_Official" target="_blank" class="btn btn-outline btn-lg">✈️ Telegram: @ManForceX_Official</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="f-brand">🎮 MAN FORCE X</div>
+        <p class="f-desc">Platform digital No.1 untuk gamer dan content creator di Malaysia. Top-up pantas, servis profesional, peralatan digital premium.</p>
+        <div class="f-trust">
+          <span class="f-tag">🔒 100% Selamat</span><span class="f-tag">⚡ Proses Pantas</span><span class="f-tag">⏰ 24/7 Aktif</span>
+        </div>
+      </div>
+      <div>
+        <div class="f-head">Pautan Pantas</div>
+        <ul class="f-links">
+          <li><a href="#">Laman Utama</a></li>
+          <li><a href="#produk">Semua Produk</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="f-head">Hubungi Kami</div>
+        <div class="f-contact"><span class="f-ci">💬</span><div><div class="f-cl">WhatsApp</div><a href="https://wa.me/601139183035" target="_blank" class="f-cv" style="color:var(--green)">+60 11-3918 3035</a></div></div>
+        <div class="f-contact"><span class="f-ci">✈️</span><div><div class="f-cl">Telegram</div><a href="https://t.me/ManForceX_Official" target="_blank" class="f-cv text-cyan">@ManForceX_Official</a></div></div>
+        <div class="f-contact"><span class="f-ci">⏰</span><div><div class="f-cl">Masa Operasi</div><div class="f-cv">24 Jam / 7 Hari</div></div></div>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2025 Man Force X. Hak cipta terpelihara.</span>
+      <span>Powered by <strong style="color:var(--cyan)">Man Force X</strong></span>
+    </div>
+  </div>
+</footer>
+
+<div id="modal">
+  <div class="modal-box">
+    <div class="modal-img" id="m-img"></div>
+    <button class="m-close" onclick="closeM()">&times;</button>
+    <div class="m-body">
+      <div id="m-badge" style="margin-bottom:12px"></div>
+      <div id="m-sold-notice" style="display:none" class="modal-sold-notice">🚫 Produk ini sedang <strong>Stok Habis</strong>. Hubungi admin untuk kepastian.</div>
+      <div class="m-cat" id="m-cat"></div>
+      <div class="m-name" id="m-name"></div>
+      <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:8px">
+        <div class="m-price" id="m-price"></div>
+        <div id="m-old" style="font-size:18px;color:var(--muted);text-decoration:line-through"></div>
+        <div id="m-save"></div>
+      </div>
+      <div style="display:flex;gap:18px;font-size:13px;color:var(--muted);margin-bottom:18px;flex-wrap:wrap">
+        <span id="m-rating"></span><span id="m-delivery"></span>
+      </div>
+      <div class="m-desc" id="m-desc"></div>
+      <div class="m-btns" id="m-btns"></div>
+    </div>
+  </div>
+</div>
+
+<div id="live-toast" class="hidden">
+  <div class="l-dot"></div>
+  <p class="l-text" id="l-msg"></p>
+</div>
+
+<a id="float-wa" href="https://wa.me/601139183035" target="_blank">
+  💬 <span class="wa-t">WhatsApp Admin</span>
+</a>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   ✏️  PANDUAN EDIT PRODUK
+   ═══════════════════════════════════════════════════════════════
+
+   LETAK GAMBAR:
+   • Simpan gambar dalam FOLDER SAMA dengan fail HTML ini
+   • Tukar nama dalam  image: "nama-fail.jpg"
+   • Format disokong: .jpg .jpeg .png .webp .gif
+
+   TUKAR STOK:
+   • inStock: true   → produk boleh dibeli (hijau)
+   • inStock: false  → STOK HABIS (merah, tak boleh beli)
+
+   ═══════════════════════════════════════════════════════════════ */
+
+const WA = "601139183035";
+
+const PRODUCTS = [
+  {
+    id:1,
+    name:"WEBSITE TOPUP GAME DAN PELBAGAI LAGI",
+    desc:"PLATFORM PENJUALAN TOPUP GEME DAN PELBAGAI LAGI PLATFORM YANG TERSEDIA  HUBUNGI ADMIN UNTUK MAKLUMAT LANJUT.",
+    price:10.00, old:null,
+    cat:"support", badge:"HOT",
+    emoji:"🎮", color:"#1a73e8",
+    image:"file_00000000af20720894373a8e38268d77.png",
+    inStock: true,   // ← true = Ada Stok | false = Stok Habis
+    delivery:"1–5 minit", rating:4.9, reviews:312,
+  },
+  {
+    id:2,
+    name:"APK PREMIUM",
+    desc:"BELI APK PREMIUM SERENDAH BAWAH 15 RINGGIT AKSES SEMUA CIRI TANPA HA.",
+    price:15.00, old:null,
+    cat:"tools", badge:"POPULAR",
+    emoji:"📱", color:"#7c3aed",
+    image:"1780999142338.png",
+    inStock: false,   // ← tukar kepada false kalau stok habis
+    delivery:"Serta-merta", rating:4.9, reviews:198,
+  },
+  {
+    id:3,
+    name:"TERMINAL SERVER STYLE",
+    desc:"NIKMATI TERMINAL TERMUX ANDA DENGAN GAYA MENYERONOKKAN TANPA MENGUNAKAN KOMPUTER DAN LAKTOP.",
+    price:3.00, old:null,
+    cat:"tools", badge:"SALE",
+    emoji:"🔥", color:"#e84918",
+    image:"file_000000003090720ca803c906502f5ec2.png",
+    inStock: true,
+    delivery:"1–5 minit", rating:4.8, reviews:245,
+  },
+  {
+    id:4,
+    name:"PANEL HOSTING",
+    desc:"✅ HARGA SERENDAH RM1 - RM15 ✅ SERVER STABIL & LAJU ✅ ONLINE 24 JAM ✅ FREE UPDATE ✅ SUPPORT MESRA PELANGGAN.", 
+    price:15.00, old:null,
+    cat:"tools", badge:"HOT",
+    emoji:"🔥", color:"#e84918",
+    image:"file_0000000090e0720c8c6a513dbc5df794.png",
+    inStock: true,
+    delivery:"1–5 minit", rating:4.8, reviews:167,
+  },
+  {
+    id:5,
+    name:"APIKEY",
+    desc:"PEMBELIAN APIKEY SECARA TOTAL ATAU SEWA SERENDAH RM24.",
+    price:24.00, old:null,
+    cat:"tools", badge:null,
+    emoji:"🪖", color:"#c8a44a",
+    image:"file_00000000e058720c9dfa15ef376fbf3b.png",
+    inStock: true,
+    delivery:"1–5 minit", rating:4.7, reviews:180,
+  },
+  {
+    id:6,
+    name:"NOKOS / NOMBOR VIRTUAL",
+    desc:"NOKOS PELBAGAI PLATFORM DAN NEGARA.",
+    price:15.00, old:null,
+    cat:"tools", badge:"POPULAR",
+    emoji:"🎯", color:"#ff4655",
+    image:"file_00000000ec5471fb9fb7ad3489347119.png",
+    inStock: true,
+    delivery:"5–10 minit", rating:4.8, reviews:112,
+  },
+  {
+    id:7,
+    name:"JASA BUAT WEBSITE DAN UBAH SCRIPT",
+    desc:"MEMBUAT WEDSITE PILIHAN ANDA SENDIRI DAN NIKMATI SEMUA KETEGORI TANPA MENCARI DAN SAKIT KEPALA .",
+    price:25.00, old:null,
+    cat:"tools", badge:"POPULAR",
+    emoji:"🎬", color:"#ec4899",
+    image:"IMG-20260615-WA0192.jpg",
+    inStock: true,
+    delivery:"1–2 hari", rating:4.9, reviews:156,
+  },
+  {
+    id:8,
+    name:"SIMKAD XOX 5G ORIGINAL",
+    desc:"PILIHAN KADSIM XOX 5G DAN NIKMATIN TEMPOH AKTIF 1 TAHUN.",
+    price:35.00, old:null,
+    cat:"", badge:null,
+    emoji:"▶️", color:"#ef4444",
+    image:"IMG-20260615-WA0157.jpg",
+    inStock: true,
+    delivery:"2–3 hari", rating:4.8, reviews:89,
+  },
+  {
+    id:9,
+    name:"JASA SEWA BOT",
+    desc:"PENGUNAKAN JASA SEWA BOT TANPA MENGUNAKAN SENDER ATAU NOMBOR SENDIRI.",
+    price:25.00, old:0.00,
+    cat:"", badge:"HOT",
+    emoji:"🏆", color:"#f59e0b",
+    image:"IMG-20260617-WA0352.png",
+    inStock: true,
+    delivery:"1–2 hari", rating:4.7, reviews:67,
+  },
+  {
+    id:10,
+    name:"VPS HOSTING",
+    desc:"VPS (VIRTUAL PRIVATE SERVER) ADALAH SEBUAH LINGKUNGAN SERVER VIRTUAL YANG MEMBAGI SATU SERVER FISIK MENJADI BEBERAPA BAGIAN. SETIAP BAGIAN BERSIFAT INDEPENDEN, MEMILIKI SISTEM OPERASI SENDIRI, DAN SUMBER DAYA KHUSUS (SEPERTI RAM DAN CPU). INI MENJADIKANNYA LEBIH CEPAT, STABIL, DAN AMAN DIBANDING SHARED HOSTING..",
+    price:20.00, old:null,
+    cat:"tools", badge:"NEW",
+    emoji:"💬", color:"#10b981",
+    image:"file_0000000031ac71fa920674e0c1a6097f.png",
+    inStock: true,
+    delivery:"Serta-merta", rating:4.8, reviews:43,
+  },
+  {
+    id:11,
+    name:"TOOLS DARK EVIL",
+    desc:"1 TOOLS MEMPUNYAI 40 ALAT HACKING TERMASUK MALWARE DAN RAT UNTUK KHUSUS PEMBELAJARAN DAN PENDIDIKAN ATAS KEHENDAK PENGUNAAN BUKAN TANGGUNGJAWAB KAMI.",
+    price:7.00, old:null,
+    cat:"tools", badge:"SALE",
+    emoji:"🤖", color:"#0088cc",
+    image:"file_0000000049c072089e0b848205a48d45.png",
+    inStock: true,
+    delivery:"Serta-merta", rating:4.9, reviews:71,
+  },
+  {
+    id:12,
+    name:"JAILBREAK",
+    desc:"JAILBREAK MERUPAKAN ALAT UNTUK MENGUBAH SUAI OTAK AI SAMA ADA TUJUAN ILEGAL ATAU LEGAL .",
+    price:12.00, old:20.00,
+    cat:"tools", badge:"HOT",
+    emoji:"🔒", color:"#8b5cf6",
+    image:"IMG-20260628-WA1376.jpg",
+    inStock: true,
+    delivery:"Serta-merta", rating:4.7, reviews:201,
+  },
+  {
+    id:13,
+    name:"BASE BOT ROOM",
+    desc:"BASE BOT ROOM MERUPAKAN SC BOT BOT KOSONG UNTUK MEMUDAHKAN ANDA UNTUK MEMBUAT SC BOT .",
+    price:6.00, old:null,
+    cat:"tools", badge:"POPULAR",
+    emoji:"🎨", color:"#7c3aed",
+    image:"IMG-20260629-WA0285.jpg",
+    inStock: true,
+    delivery:"Serta-merta", rating:4.9, reviews:334,
+  },
+  {
+    id:14,
+    name:"APK MANTAN",
+    desc:"APK YANG DIRAMALKAN GUNA SEBAGAI APK BUG DAN NIKMATI TOOLS LAIN SEPERTI DOW,NETWORK.DDOS DAN LAIN LAIN",
+    price:8.00, old:15.00,
+    cat:"tools", badge:"SALE",
+    emoji:"🎬", color:"#e50914",
+    image:"file_0000000029047208a0ce9f91740133cc.png",
+    inStock: false,
+    delivery:"Serta-merta", rating:4.5, reviews:287,
+  },
+  {
+    id:15,
+    name:"WHATSAPP TEMPORARY",
+    desc:"SC YANG MEMBOLEHKAN ANDA SEKAT KEMASUKAN OTP WHATSAPP.",
+    price:15.00, old:null,
+    cat:"tools", badge:"NEW",
+    emoji:"🎵", color:"#1db954",
+    image:"IMG-20260624-WA0358.png",
+    inStock: true,
+    delivery:"Serta-merta", rating:4.8, reviews:156,
+  },
+  {
+  id:16,
+    name:"WORM GPT BY DANXY OFFICIAL X INDONESIA",
+    desc:"WORM GPT BY DANXY FROM INDONESIA.",
+    price:11.00, old:null,
+    cat:"tools", badge:"SALE",
+    emoji:"🎬", color:"#e50914",
+    image:"file_00000000cadc720893932ae76a3272b6.png",
+    inStock: true,
+    delivery:"Serta-merta", rating:4.5, reviews:287,
+  }, 
+ {id:17,
+    name:"WORM GPT BY ANYOINIMUS RUSIA X RUSIA ",
+    desc:"WORM GPT BY RUSIA.",
+    price:204.00, old:null,
+    cat:"tools", badge:"SALE",
+    emoji:"🎬", color:"#e50914",
+    image:"file_0000000011dc7208b3ef2d59bd1fc8de.png",
+    inStock: true,
+    delivery:"Serta-merta", rating:4.5, reviews:287,
+ }, 
+ {id:18,
+    name:"DDOS LEYER 4",
+    desc:"DDOS LAYER 4 1 PET SC GRUP PRIVATE MFX.",
+    price:10.00, old:null,
+    cat:"tools", badge:"SALE",
+    emoji:"🎬", color:"#e50914",
+    image:"file_0000000072f871faaeb476263872e906.png",
+    inStock: true,
+    delivery:"Serta-merta", rating:4.5, reviews:287,
+   
+ }
+];
+
+const TESTI=[
+  {name:"Ahmad Razif",role:"ML Player",text:"Top-up ML paling laju yang pernah saya try. 2 minit terus masuk. 10/10!",s:5},
+  {name:"Nurul Ain",role:"Content Creator",text:"Jasa edit video sangat berbaloi! Hasil kerja profesional, harga murah. Akan repeat!",s:5},
+  {name:"Zulhafiz",role:"Streamer",text:"VPN premium murah gila. Laju, stable, puas hati. Dah subscribe 3 bulan.",s:5},
+  {name:"Farah Nadia",role:"Bisnes Owner",text:"Script auto-reply WhatsApp memang membantu bisnes saya. Layan customer 24/7!",s:5},
+  {name:"Haziq Danial",role:"FF Player",text:"Top-up FF cepat dan selamat. Harga paling kompetitif. Sangat recommended!",s:5},
+  {name:"Syafiqah",role:"TikToker",text:"Edit video TikTok hasilnya meletop! Views naik 3x lepas pakai service ni!",s:5},
+];
+
+const FAQ_DATA=[
+  {q:"Berapa lama proses top-up game?",a:"Kebanyakan top-up diproses dalam masa 1–5 minit selepas pembayaran disahkan."},
+  {q:"Bagaimana cara saya membuat pesanan?",a:"Klik produk, tekan 'Beli via WhatsApp', kemudian admin akan guide anda step-by-step."},
+  {q:"Kaedah pembayaran apa yang diterima?",a:"Kami menerima TNG eWallet, Maybank2u, CIMB Clicks, ShopeePay, GrabPay dan bank transfer."},
+  {q:"Adakah transaksi saya selamat?",a:"Ya, 100% selamat. Setiap transaksi disahkan secara manual oleh admin kami."},
+  {q:"Apa yang perlu dilakukan jika top-up tidak masuk?",a:"Hubungi admin segera melalui WhatsApp. Sediakan bukti bayaran dan kami akan selesaikan dalam 24 jam."},
+  {q:"Boleh saya jadi reseller?",a:"Ya! Kami ada program reseller dengan harga borong eksklusif. Hubungi admin untuk maklumat lanjut."},
+];
+
+/* helpers */
+function bdg(b){if(!b)return"";const m={HOT:"badge-hot",NEW:"badge-new",SALE:"badge-sale",POPULAR:"badge-popular"};return`<span class="badge-pill ${m[b]||'badge-new'}">${b}</span>`}
+function sv(p,o){return o&&o!==p?Math.round((1-p/o)*100):null}
+function catLbl(c){return{topup:"🎮 Top-Up Game","edit-video":"🎬 Edit Video",script:"🤖 Script",tools:"🔧 Tools"}[c]||"📦 Lain-lain"}
+
+/* render card */
+function mkCard(p){
+  const s=sv(p.price,p.old);
+  const isOut=!p.inStock;
+  return`<div class="product-card${isOut?' out-of-stock':''}" onclick="${isOut?'openM('+p.id+')':'openM('+p.id+')'}">
+    ${isOut?'<div class="sold-out-ribbon">Stok Habis</div>':''}
+    <div class="product-img-box" style="background:linear-gradient(135deg,${p.color}22,var(--bg3))">
+      <img src="${p.image}" alt="${p.name}" loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="img-placeholder" style="display:none">
+        <div class="ph-icon">${p.emoji}</div>
+        <div class="ph-text">Letak Gambar Di Sini</div>
+      </div>
+      <div class="img-overlay"></div>
+      <div class="badge-wrap">${bdg(p.badge)}</div>
+      <div class="stock-status ${isOut?'out':'in'}">
+        <span class="s-dot"></span>${isOut?'Stok Habis':'Stok Ada'}
+      </div>
+    </div>
+    <div class="product-body">
+      <div class="p-cat">${catLbl(p.cat)}</div>
+      <div class="p-name">${p.name}</div>
+      <div class="p-desc">${p.desc}</div>
+      <div class="p-meta">
+        <span class="p-stars">${"★".repeat(Math.round(p.rating))}<span> (${p.reviews})</span></span>
+        <span class="p-delivery">⚡ ${p.delivery}</span>
+      </div>
+      <div class="price-wrap">
+        <div class="price-left">
+          <div class="price-label">Harga</div>
+          <div class="price-main" style="${isOut?'color:var(--muted)':''}">${isOut?'<span style="font-size:20px;color:var(--muted)">—</span>':`RM${p.price.toFixed(2)}`}</div>
+          ${p.old&&!isOut?`<div class="price-old">RM${p.old.toFixed(2)}</div>`:""}
+        </div>
+        <div class="price-right">
+          ${s&&!isOut?`<div class="save-badge">-${s}%</div>`:""}
+          ${isOut
+            ?'<div class="sold-btn">🚫 Habis</div>'
+            :'<div class="buy-btn">Beli →</div>'
+          }
+        </div>
+      </div>
+    </div>
+  </div>`}
+
+document.getElementById("pgrid").innerHTML=PRODUCTS.map(mkCard).join("");
+
+/* stats */
+ const sg = document.getElementById("stats-grid");
+
+[
+  { i: "🛒", v: "13200+", l: "Pesanan Berjaya" },
+  { i: "👥", v: "800+", l: "Pelanggan Aktif" },
+  { i: "⭐", v: "4.9/5", l: "Rating Purata" },
+  { i: "⚡", v: "< 5min", l: "Masa Proses" }
+].forEach(x => {
+  sg.innerHTML += `
+    <div class="stat-item">
+      <div class="stat-icon">${x.i}</div>
+      <div class="stat-val">${x.v}</div>
+      <div class="stat-lbl">${x.l}</div>
+    </div>
+  `;
+});
+
+/* testi */
+const tg=document.getElementById("testi-grid");
+TESTI.forEach(t=>{tg.innerHTML+=`<div class="testi-card"><div class="t-stars">${"★".repeat(t.s)}</div><p class="t-text">"${t.text}"</p><div class="t-author"><div class="t-avatar">${t.name[0]}</div><div><div class="t-name">${t.name}</div><div class="t-role">${t.role}</div></div></div></div>`});
+
+/* faq */
+const fl=document.getElementById("faq-list");
+FAQ_DATA.forEach(f=>{const d=document.createElement("div");d.className="faq-item";d.innerHTML=`<button class="faq-q" onclick="tFaq(this)"><span>${f.q}</span><span class="faq-chev">▼</span></button><div class="faq-a">${f.a}</div>`;fl.appendChild(d)});
+function tFaq(b){const i=b.closest(".faq-item"),o=i.classList.contains("open");document.querySelectorAll(".faq-item.open").forEach(e=>e.classList.remove("open"));if(!o)i.classList.add("open")}
+
+/* ticker */
+const tw=document.getElementById("tkr");
+["🎮 JASA EDIT VIDIO","🎬 JASA BUAT APK CEKBAN","🔒 VPN PREMIUM RM12/BULAN","🎨 CPANEL ADMIN","🔥 Top-Up FF pantas & selamat","🤖 Script Chatbot Telegram","🎵 APIKEY STAIL","🎯 Valorant VP tersedia"]
+.flatMap(x=>[x,x]).forEach(t=>{const s=document.createElement("span");s.className="ticker-item";s.innerHTML=`<span class="t-dot"></span>${t}`;tw.appendChild(s)});
+
+/* live toast */
+const lt=document.getElementById("live-toast"),lm=document.getElementById("l-msg");
+const ev=["Ahmad dari <strong>Kelantan</strong> beli <strong>Produk 1</strong>","Nurul dari <strong>Johor</strong> order <strong>Produk 7</strong>","Haziq dari <strong>KL</strong> top-up <strong>Produk 3</strong>","Farah dari <strong>Penang</strong> beli <strong>APK Premium</strong>","Zul dari <strong>Sabah</strong> order <strong>Produk 11</strong>"];
+let ei=0;function showLive(){lm.innerHTML=ev[ei%ev.length];lt.classList.remove("hidden");ei++;setTimeout(()=>lt.classList.add("hidden"),4000)}
+setTimeout(()=>{showLive();setInterval(showLive,7000)},2500);
+
+/* modal */
+function openM(id){
+  const p=PRODUCTS.find(x=>x.id===id);if(!p)return;
+  const mi=document.getElementById("m-img");
+  mi.style.background=`linear-gradient(135deg,${p.color}33,var(--bg3))`;
+  const oldImg=mi.querySelector("img");if(oldImg)oldImg.remove();
+  const oldPh=mi.querySelector(".ph");if(oldPh)oldPh.remove();
+  const img=document.createElement("img");
+  img.src=p.image;img.alt=p.name;
+  img.onerror=()=>{img.remove();const ph=document.createElement("div");ph.className="ph";ph.textContent=p.emoji;mi.appendChild(ph)};
+  mi.appendChild(img);
+
+  const isOut=!p.inStock;
+  const s=sv(p.price,p.old);
+  document.getElementById("m-badge").innerHTML=bdg(p.badge);
+  document.getElementById("m-sold-notice").style.display=isOut?"flex":"none";
+  document.getElementById("m-cat").textContent=catLbl(p.cat);
+  document.getElementById("m-name").textContent=p.name;
+  document.getElementById("m-price").textContent=isOut?"—":`RM${p.price.toFixed(2)}`;
+  document.getElementById("m-price").style.color=isOut?"var(--muted)":"var(--cyan)";
+  document.getElementById("m-old").textContent=p.old&&!isOut?`RM${p.old.toFixed(2)}`:"";
+  document.getElementById("m-save").innerHTML=s&&!isOut?`<div class="save-badge" style="font-size:13px">-${s}% jimat</div>`:"";
+  document.getElementById("m-rating").innerHTML=`⭐ ${p.rating} (${p.reviews} ulasan)`;
+  document.getElementById("m-delivery").innerHTML=`⚡ ${p.delivery}`;
+  document.getElementById("m-desc").textContent=p.desc;
+
+  const mb=document.getElementById("m-btns");
+  if(isOut){
+    mb.innerHTML=`
+      <a href="https://wa.me/${WA}?text=${encodeURIComponent("Salam, saya nak tanya bila ada stok untuk: "+p.name)}" target="_blank" class="btn btn-outline btn-lg">💬 Tanya Bila Ada Stok</a>
+      <a href="https://t.me/ManForceX_Official" target="_blank" class="btn btn-outline btn-lg" style="border-color:rgba(168,85,247,.4);color:var(--purple)">✈️ Tanya via Telegram</a>`;
+  }else{
+    mb.innerHTML=`
+      <a href="https://wa.me/${WA}?text=${encodeURIComponent("Salam, saya nak beli:\n\n*"+p.name+"*\nHarga: RM"+p.price.toFixed(2)+"\n\nSila proses pesanan saya.")}" target="_blank" class="btn btn-green btn-lg">💬 Beli via WhatsApp</a>
+      <a href="https://t.me/ManForceX_Official" target="_blank" class="btn btn-outline btn-lg">✈️ Hubungi via Telegram</a>`;
+  }
+  document.getElementById("modal").classList.add("open");
+  document.body.style.overflow="hidden";
+}
+function closeM(){document.getElementById("modal").classList.remove("open");document.body.style.overflow=""}
+document.addEventListener("click",e=>{if(e.target.id==="modal")closeM()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeM()});
+
+/* hamburger */
+const nt=document.getElementById("nav-toggle"),mm=document.getElementById("mobile-menu");
+if(nt&&mm){nt.addEventListener("click",()=>{mm.classList.toggle("open");nt.classList.toggle("open")})}
+</script>
+</body>
+</html>
